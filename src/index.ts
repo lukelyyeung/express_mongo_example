@@ -5,9 +5,11 @@ import mongoose from 'mongoose';
 
 async function bootstrap() {
   const app = express();
-  await mongoose.connect('mongodb://localhost:27017/express_example');
+  await mongoose.connect(process.env.MONGO_CONNECTION_STRING!);
 
   app.use(bodyParser.json());
+
+  app.get('/', (_, res) => res.send({ status: 'ok' }));
 
   app.use('/users', userRouter);
 
@@ -18,7 +20,7 @@ async function bootstrap() {
 
 bootstrap();
 
-// irrelevant to time, mac address 
+// irrelevant to time, mac address
 
 // Find the user with username / unique identifier e.g. email
 // hashedPassword === hash(the password in payload + salt)
