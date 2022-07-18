@@ -2,6 +2,7 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import { userRouter } from './routers/user.router';
 import mongoose from 'mongoose';
+import os from 'os';
 
 async function bootstrap() {
   const app = express();
@@ -9,7 +10,7 @@ async function bootstrap() {
 
   app.use(bodyParser.json());
 
-  app.get('/', (_, res) => res.send({ status: 'ok' }));
+  app.get('/', (_, res) => res.send({ status: 'ok', upTime: os.uptime() }));
 
   app.use('/users', userRouter);
 
