@@ -13,7 +13,7 @@ jobs:
         os: [ubuntu-latest]
         node: [16]
     env:
-      NODE_ENV: "production"
+      NODE_ENV: "development"
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@master
