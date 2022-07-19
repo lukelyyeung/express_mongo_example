@@ -10,7 +10,7 @@ async function bootstrap() {
 
   app.use(bodyParser.json());
 
-  app.get('/', (_, res) => res.send({ status: 'ok', upTime: os.uptime() }));
+  app.get('/', (_, res) => res.send({ status: 'ok', upTime: os.uptime(), serverTime: Date.now() }));
 
   app.use('/users', userRouter);
 
